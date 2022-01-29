@@ -14,15 +14,19 @@ class HomeController extends Controller
         $userType = Auth::user()->userType;
         if($userType == 1)
         {
-            return view('admin.dashboard');
+            return redirect()->route('dashboard');
         }
         else{
-            return view('user.home');
+            return redirect()->route('home');
         }
     }
 
     public function index()
     {
-        return view('user.home');
+        return view('user.home.main');
+    }
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
 }
