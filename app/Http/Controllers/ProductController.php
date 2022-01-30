@@ -15,7 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return view('admin.product.index');
+        $product = Product::orderBy('id','desc')->Paginate(3);
+        return view('admin.product.index',compact('product'));
     }
 
     /**
@@ -81,9 +82,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
+        $product = Product::find($id);
+        return view('admin.product.edit',compact('product'));
+        
     }
 
     /**
@@ -96,6 +100,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $validated = $request->all([
+            'title' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+      
+        
+        $data = $request->all();
+        $product->update($data);
+
+
+        return redirect()->back()->with('stutus','Product update successfully');
     }
 
     /**
@@ -104,8 +121,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
+       $product = Product::find($id);
+       $product->delete();
+       return redirect()->back()->with('stutus','Product deleted successfully');
+
     }
 }

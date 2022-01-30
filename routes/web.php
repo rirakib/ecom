@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::post('/',[HomeController::class,'search'])->name('search');
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 
 Route::resource('/dashboard/product',ProductController::class,['name'=>'product']);

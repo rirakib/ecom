@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $product = Product::orderBy('id','desc')->Paginate(2);
+        $product = Product::orderBy('id','desc')->Paginate(3);
         return view('user.home.main',compact('product'));
     }
     public function dashboard()
