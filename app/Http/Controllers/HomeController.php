@@ -31,4 +31,12 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $product = Product::where('title','Like','%'.$search.'%')->get();
+       
+        return view('user.home.main',compact('product'));
+        
+    }
 }
