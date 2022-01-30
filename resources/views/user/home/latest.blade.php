@@ -24,6 +24,11 @@
                         </a>
                         <h6>${{$data->price}}</h6>
                         <p>{{$data->description}}</p>
+                        <form action="{{route('cart',$data->id)}}" method="POST">
+                            @csrf 
+                            <input type="number" style="width:100px; display:block" value="1" min="1" name="product_quantity" id="">
+                            <button class="btn btn-primary mt-2">Add Cart</button>
+                        </form>
                         <ul class="stars">
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
@@ -38,7 +43,7 @@
             @endforeach
 
         </div>
-        @if(method_exists('product','link'))
+        @if(method_exists($product,'links'))
         <div class="row">
             <div class="d-flex justify-content-center">
                 {!! $product->links() !!}
