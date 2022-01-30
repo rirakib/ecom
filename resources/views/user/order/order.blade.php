@@ -28,8 +28,9 @@
     @endphp
     <div class="row">
         <div class="col-md-5 mt-5">
-            <form action="{{route('order.store')}}" method="POST" class="forms-sample mb-3">
+            <form action="{{route('order.store',)}}" method="POST" class="forms-sample mb-3">
                 @csrf
+                <input type="hidden" value="{{$order->id}}" name="order_id">
                 <div class="form-group mb-3">
                     <label for="title">Product Title</label>
                     <input type="text" value="{{$order->product_title}}" class="form-control" name="title" id="title">

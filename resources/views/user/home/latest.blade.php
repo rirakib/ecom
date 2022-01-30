@@ -64,10 +64,13 @@
 
 <style>
     .product-item img {
-        height: 150px;
+        height: 220px;
         width: 100%;
         object-fit: cover;
         object-position: center;
+    }
+    .product-item{
+        height: 520px;
     }
     .search-product{
         width: 220px;

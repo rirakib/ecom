@@ -26,8 +26,10 @@ class OrderController extends Controller
             'title','email','mobile','address','bikash_number','quantity','price','reffer_code'
         ]);
         Order::create($data);
-        
-        return redirect()->back()->with('stutus','Order Complete Successfully');
+        $order_id = $request->order_id;
+        $cart = Cart::find($order_id);
+        $cart->delete();
+        return redirect()->route('cart.show')->with('stutus','Order Complete Successfully');
         
     }
 }

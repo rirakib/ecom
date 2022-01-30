@@ -7,13 +7,20 @@
 
 
     
-        <div class="container" style="padding-top: 100px; height:80vh">
+        <div class="container" style="padding-top: 100px; min-height:80vh">
             <div class="row">
                 <div class="col-md-8 mx-auto mt-3 mb-3">
                     <h1 style="font-size: 3.5rem">Cart Page</h1>
                 </div>
             </div>
             <div class="row">
+                @if(DB::table('carts')->where('name',auth()->user()->email)->count() == 0)
+                    <div class="col-md-10 mx-auto">
+                    <h1 style="font-size:50px; font-weight:bold; color:teal; padding:50px 0px;">There have no cart</h1>
+                    <a href="{{route('home')}}" class="btn btn-warning mt-5">Shopping Page</a>
+                    </div>
+                    
+                @else
                 <div class="col-md-10 mx-auto">
 
                     <div class="col-md-10 mx-auto mb-2">
@@ -76,7 +83,7 @@
                 </div>
             </div>
         </div>
-    
+        @endif
 
        
 @endsection
