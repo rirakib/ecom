@@ -23,9 +23,9 @@
                             <h4>{{$data->title}}</h4>
                         </a>
                         @if($data->quantity > 5 )
-                        <h1 class="text-success">Stock</h1>
+                        <p class="text-success">Stock</p>
                         @else 
-                        <h1 class="text-danger">Out of stock</h1>
+                        <p class="text-danger">Out of stock</p>
                         @endif
                         <h6>${{$data->price}}</h6>
                         <p>{{$data->description}}</p>

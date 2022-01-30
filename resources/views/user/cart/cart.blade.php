@@ -51,7 +51,7 @@
                                     <p class="text-center">${{$data->price}}</p>
                                 </div>
                                 <div class="col-md-2">
-                                    <p class="text-center"><a href="" class="btn btn-primary">Order Now</a></p>
+                                    <p class="text-center"><a href="{{route('order',$data->id)}}" class="btn btn-primary">Order Now</a></p>
                                 </div>
                                 <div class="col-md-3">
                                     <p class="text-center">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,9 @@ Route::post('/cart/delete/{id}',[HomeController::class,'cartDelete'])->name('car
 Route::get('/cart/show/',[HomeController::class,'cartShow'])->name('cart.show');
 Route::post('/search',[HomeController::class,'search'])->name('search');
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+
+Route::get('/order/{id}',[OrderController::class,'orderView'])->name('order');
+Route::post('/order/promo',[OrderController::class,'promo'])->name('promo');
+Route::post('/order/store',[OrderController::class,'store'])->name('order.store');
 
 Route::resource('/dashboard/product',ProductController::class,['name'=>'product']);
