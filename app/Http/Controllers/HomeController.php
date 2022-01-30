@@ -26,10 +26,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $user = auth::user();
-        $count = Cart::where('name',$user->email)->count();
+        
         $product = Product::orderBy('id','desc')->Paginate(3);
-        return view('user.home.main',compact('product','count'));
+        return view('user.home.main',compact('product'));
     }
     public function dashboard()
     {
@@ -44,7 +43,6 @@ class HomeController extends Controller
         return view('user.home.main',compact('product'));
         }
         $product = Product::where('title','Like','%'.$search.'%')->get();
-       
         return view('user.home.main',compact('product'));
         
     }
@@ -68,5 +66,20 @@ class HomeController extends Controller
         else{
             return redirect()->route('login');
         }
+    }
+
+    public function cartShow()
+    {
+        $user = auth::user();
+        $count = Cart::where('name',$user->email)->count();
+        $cart = Cart::where('name',$user->email)->orderBy('id','desc')->paginate(3);
+        return view('user.cart.cart',compact('cart'));
+    }
+
+    public function cartDelete($id)
+    {
+        $data = Cart::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

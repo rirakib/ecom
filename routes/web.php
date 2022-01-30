@@ -25,6 +25,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::post('/cart/{id}',[HomeController::class,'cart'])->name('cart');
+Route::post('/cart/delete/{id}',[HomeController::class,'cartDelete'])->name('cart.destroy');
+Route::get('/cart/show/',[HomeController::class,'cartShow'])->name('cart.show');
 Route::post('/search',[HomeController::class,'search'])->name('search');
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
 

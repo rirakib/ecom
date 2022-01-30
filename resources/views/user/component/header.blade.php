@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home
+                        <a class="nav-link" href="{{route('home')}}">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -30,7 +30,9 @@
 
                         @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html"><i class="fas fa-shopping-cart"></i> Cart<span class="badge bg-primary ml-2">{{$count}}</span></a>
+                        <a class="nav-link" href="{{route('cart.show')}}"><i class="fas fa-shopping-cart"></i> Cart<span class="badge bg-primary ml-2">
+                            {{DB::table('carts')->where('name',auth()->user()->email)->count()}}
+                        </span></a>
                     </li>
 
                     <li>
