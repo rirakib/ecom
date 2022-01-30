@@ -61,6 +61,9 @@ class HomeController extends Controller
             $cart->product_title = $product->title;
 
             $cart->save();
+
+            
+
             return redirect()->back();
         }
         else{

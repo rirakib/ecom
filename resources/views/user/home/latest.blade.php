@@ -22,13 +22,22 @@
                         <a href="#">
                             <h4>{{$data->title}}</h4>
                         </a>
+                        @if($data->quantity > 5 )
+                        <h1 class="text-success">Stock</h1>
+                        @else 
+                        <h1 class="text-danger">Out of stock</h1>
+                        @endif
                         <h6>${{$data->price}}</h6>
                         <p>{{$data->description}}</p>
+                        @if($data->quantity > 5)
                         <form action="{{route('cart',$data->id)}}" method="POST">
                             @csrf 
                             <input type="number" style="width:100px; display:block" value="1" min="1" name="product_quantity" id="">
                             <button class="btn btn-primary mt-2">Add Cart</button>
                         </form>
+                        @else
+                        <p>Comming soon</p>
+                        @endif
                         <ul class="stars">
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
