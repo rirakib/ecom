@@ -7,7 +7,7 @@
 
 
     
-        <div class="container" style="padding-top: 100px; min-height:80vh">
+        <div class="container" style="padding-top: 100px; min-height:85vh">
             <div class="row">
                 <div class="col-md-8 mx-auto mt-3 mb-3">
                     <h1 style="font-size: 3.5rem">Cart Page</h1>
